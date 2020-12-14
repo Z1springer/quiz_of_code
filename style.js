@@ -1,8 +1,7 @@
 console.log("It is linked, yay")
 
 
-// Score can be based on how much time they have left in the quiz, or some other similar punishment for incorrect answers
-// Find a way to store all of the high scores (save this for last)
+// Score is be based on how much time they have left in the quiz
 // Questions CAN be about anything you want, but if you will not be doing coding questions then it MUST be school appropriate (PG-13 or Rated T if that helps), I will be working with the only other thing I know to be techy and confusing more often than not to outsiders; Star Trek!
 
 
@@ -25,7 +24,8 @@ document.addEventListener("click", function () {
 //TODO: store questions within an array of objects. Each object can have a question and choices while singling out the correct choice.
 
 
-var currentQuestionsIndex = 1
+var currentQuestionsIndex = [];
+
 
 
 var questions = [ //each set of questions, choices, and correctAnswers is considered one object in the array; questions
@@ -55,13 +55,13 @@ var questions = [ //each set of questions, choices, and correctAnswers is consid
         correctAnswer: 'Bird-of-Prey'
     },
     {
-        question: 'Who is one of the major rivals for the United Federation of Planets?',
+        question: 'Who is one of the major rivals for the United Federation of Planets in the series Deep Space 9?',
         choices: ['The Klingon Empire', 'The Ferengi Alliance', 'The Sheliak Corporate', 'The Cardassian Union'],
         correctAnswer: 'The Cardassian Union'
     },
     {
         question: 'What was the name of the ship lost in the Delta Quadrant for seven years?',
-        choices: ['USS Pathfinder', 'USS Wayfarer', 'USS Traveler', 'USS Voyager'],
+        choices: ['USS Voyager', 'USS Wayfarer', 'USS Traveler', 'USS Pathfinder'],
         correctAnswer: 'USS Voyager'
     }
 ]
@@ -71,7 +71,27 @@ var questions = [ //each set of questions, choices, and correctAnswers is consid
 
 //TODO: show the choices of each question (use a loop)
 
+function showQuestions(question, quizConatiner) {
 
+    var output = [];
+
+    var answers;
+
+
+
+    for (var i = 0; i < questions.length; i++) {
+
+        answers = [];
+
+        for (letter in questions[i].answers) {
+
+            answers.push(
+
+
+            )
+        }
+    }
+}
 
 
 
@@ -141,4 +161,16 @@ console.log(questions[currentQuestionsIndex].question)
     //TODO: on the same page as the 'Quiz Consluded', prompt the user with a request to enter their name for the score board
 
 
+// function generateQuiz (questions, quizContainer, resultsContainer, submitButton){
+//     function showQuestions(questions, quizContainer){
 
+//     }
+
+//     function showResults(questions, quizContainer, resultsContainer){
+
+//     }
+
+//     showQuestions(questions, quizConatiner);
+
+//     submitButton.onclick = function()
+// }
