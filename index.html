@@ -14,65 +14,18 @@
     <div id="main">
         <div id="header">
             <h1>Welcome to a Quiz for New Treky Recruits!!!</h1>
+            <button id="startButton">Commence</button>
         </div>
 
-        <form id="form1">
+        <div id="quizForm">
+            <p id="question"></p>
+            <button id="answer1" class="choice" data="hello"></button>
+            <button id="answer2" class="choice"></button>
+            <button id="answer3" class="choice"></button>
+            <button id="answer4" class="choice"></button>
+        </div>
 
-            <h2>What Class of ship is the Enterprise-D?</h2>
-            <label for="var_string"><input type="radio" name="variable" value="0" id="var_string" />Nebula</label>
-            <label for="var_join"><input type="radio" name="variable" value="0" id="var_join" />Consitution</label>
-            <label for="var_info"><input type="radio" name="variable" value="25" id="var_info" />Galaxy</label>
-            <label for="var_condition"><input type="radio" name="variable" value="0"
-                    id="var_condition" />Excelsior</label>
-
-            <h2>Humanity first made contact with which Alien race?</h2>
-            <label for="sub_string"><input type="radio" name="sub" value="0" id="sub_string" />Betazoids</label>
-            <label for="sub_join"><input type="radio" name="sub" value="0" id="sub_join" />Klingons</label>
-            <label for="sub_info"><input type="radio" name="sub" value="0" id="sub_info" />Ferengi</label>
-            <label for="sub_condition"><input type="radio" name="sub" value="25" id="sub_condition" />Vulcans</label>
-
-            <h2>What kind of defensive hand weapon is common for Starfleet Officers?</h2>
-            <label for="cat_string"><input type="radio" name="con" value="25" id="cat_string" />Phaser</label>
-            <label for="cat_join"><input type="radio" name="con" value="0" id="cat_join" />Handgun</label>
-            <label for="cat_info"><input type="radio" name="con" value="0" id="cat_info" />Taser</label>
-            <label for="cat_condition"><input type="radio" name="con" value="0" id="cat_condition" />Disruptor</label>
-
-            <h2>Who was the Captain of the Enterprise-D?</h2>
-            <label for="if_string"><input type="radio" name="ifstate" value="0" id="if_string" />Kirk</label>
-            <label for="if_join"><input type="radio" name="ifstate" value="25" id="if_join" />Picard</label>
-            <label for="if_info"><input type="radio" name="ifstate" value="0" id="if_info" />Janeway</label>
-            <label for="if_condition"><input type="radio" name="ifstate" value="0" id="if_condition" />Sisko</label>
-
-            <h2>Which is a type of Klingon Ship?</h2>
-            <label for="if_string"><input type="radio" name="ifstate" value="0" id="if_string" />Duck-of-War</label>
-            <label for="if_join"><input type="radio" name="ifstate" value="0" id="if_join" />Chicken-of-Death</label>
-            <label for="if_info"><input type="radio" name="ifstate" value="25" id="if_info" />Bird-of-Prey</label>
-            <label for="if_condition"><input type="radio" name="ifstate" value="0"
-                    id="if_condition" />Fowl-of-Fighting</label>
-
-            <h2>Who is one of the major rivals for the United Federation of Planets in the series Deep Space 9?</h2>
-            <label for="if_string"><input type="radio" name="ifstate" value="0" id="if_string" />The Klingon
-                Empire</label>
-            <label for="if_join"><input type="radio" name="ifstate" value="0" id="if_join" />The Ferengi
-                Alliance</label>
-            <label for="if_info"><input type="radio" name="ifstate" value="0" id="if_info" />The Sheliak
-                Corporate</label>
-            <label for="if_condition"><input type="radio" name="ifstate" value="25" id="if_condition" />The Cardassian
-                Union</label>
-
-            <h2>What was the name of the ship lost in the Delta Quadrant for seven years?</h2>
-            <label for="if_string"><input type="radio" name="ifstate" value="25" id="if_string" />USS Voyager</label>
-            <label for="if_join"><input type="radio" name="ifstate" value="0" id="if_join" />USS Wayfarer</label>
-            <label for="if_info"><input type="radio" />USS Traveler</label>
-            <label for="if_condition"><input type="" />USS
-                Pathfinder</label>
-
-            <button type="submit" value="Submit">Submit</button>
-
-        </form>
-
-
-        <p>Your grade is: <span id="grade">__</span></p>
+        <p>Your Time is: <span id="grade">__</span></p>
         <p id="grade2"></p>
     </div>
 
