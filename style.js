@@ -6,34 +6,35 @@ console.log(window)
 // I will be working with the only other thing I know to be techy and confusing more often than not to outsiders; Star Trek!
 
 
-
-
 // GIVEN I am taking a code quiz
 
 // WHEN I click the start button
 
-// make an HTML button and addEventListoner
 document.getElementById("startButton").addEventListener("click", function () {
-    console.log("Quiz Commences")
-    var startTime = 180
-    setInterval(function () {
-        startTime--
-        console.log(startTime);
-    }, 1000)
+    console.log("Quiz Commences");
+    document.getElementById("quizForm").style.display = "block";
+    setTimer()
 })
 
 // THEN a timer starts and I am presented with a question
 
-//TODO: in the eventListoner from the previous step I activate the timer (add timer last)
-
-// store questions within an array of objects. Each object can have a question and choices while singling out the correct choice.
-
+var startTime = 80
+var timer = ""
+function setTimer() {
+    timer = setInterval(function () {
+        startTime--;
+        console.log(startTime);
+        document.getElementById("time").textContent = startTime
+        if (startTime === 0) {
+            clearInterval(timer);
+            alert("TIMES UP")
+        }
+    }, 1000)
+}
 
 var currentQuestionsIndex = 0;
 
-
-
-var questions = [ //each set of questions, choices, and correctAnswers is considered one object in the array; questions
+var questions = [ //each set of questions, choices, and correctAnswers is considered one object in the array; 'questions'
     {
         question: 'What Class of ship is the Enterprise-D?',
         choices: ['Nebula', 'Constitution', 'Galaxy', 'Excelsior'],
@@ -73,14 +74,6 @@ var questions = [ //each set of questions, choices, and correctAnswers is consid
 
 // WHEN I answer a question
 
-// show the first question from the array.
-
-// show the choices of each question
-
-// show the question to the user in browser
-
-// show choices to the user in the browser
-
 var questionIndex = 0;
 
 function showQuestions() {
@@ -88,7 +81,7 @@ function showQuestions() {
     document.getElementById("question").textContent = questions[questionIndex].question
 
     document.getElementById("answer1").textContent = questions[questionIndex].choices[0]
-    document.getElementById("answer1").setAttribute("data", questions[questionIndex].choices[0]) //it works yay!
+    document.getElementById("answer1").setAttribute("data", questions[questionIndex].choices[0])
 
     document.getElementById("answer2").textContent = questions[questionIndex].choices[1]
     document.getElementById("answer2").setAttribute("data", questions[questionIndex].choices[1])
@@ -102,69 +95,52 @@ function showQuestions() {
 
 showQuestions()
 
-// get answer from user
+// THEN I am presented with another question
 
 document.querySelectorAll(".choice").forEach(function (each) {
     each.addEventListener("click", function (event) {
-        let answerFromUser = event.target.getAttribute("data")
-        console.log(questions[currentQuestionsIndex].correctAnswer)
-
+        let answerFromUser = event.target.getAttribute("data");
+        // WHEN I answer a question incorrectly
+        // THEN time is subtracted from the clock
         if (answerFromUser === questions[currentQuestionsIndex].correctAnswer) {
-            console.log("You should be in Starfleet!")
+            startTime + 10;
         } else {
-            console.log("Seems Star Wars may be more your speed.")
+            startTime - 10;
         }
         questionIndex++
         if (questionIndex < 6) {
+            // WHEN all questions are answered or the timer reaches 0
             showQuestions()
-        } else {
-            alert("GAME OVER")
+
+        } else {// THEN the game is over
+            clearInterval(timer);
+            alert(startTime)
+            var userInits = prompt("What are your initials?")
+            var userObj = {
+                initials: userInits,
+                score: score
+            }
+            storedScores.push(userObj)
+            localStorage.setItem('finalTime', JSON.stringify(storedScores))
+            renderScores();
         }
-        // console.log(questions[currentQuestionsIndex].question)
     })
 })
 
-
-// THEN I am presented with another question
-
-//TODO: determine what user chose as their answer. add a click eventListoner to all of the choices
-
-//TODO: compare what user chose with correct answer (if statements)
-
-//TODO: store the correct answer in a finalScore var
-
-// WHEN I answer a question incorrectly
-
-//TODO: inform the user with a caption underneath the question that they chose the wrong answer
-
-//TODO: log the incorrect answer into the finalScore Var
-
-// THEN time is subtracted from the clock
-
-//TODO: Work on the timer and how it interacts with right/wrong answers towards the end
-
-// WHEN all questions are answered or the timer reaches 0
-
-//TODO: display final score according to how much time remained after the questions were answered
-
-//TODO: log and display final score(time) on a high score board that will save in local storage
-
-// THEN the game is over (use alerts)
-
-//TODO: display a congratulatory message that they finished with x amount of time left
-
-//TODO: offer commiserations that they were unable to finish in the time allotted
-
-//TODO: prompt the user with a confirm; "Would you like to try again?"
-
 // WHEN the game is over
-
-//TODO: display 'Quiz Concluded' in large bright letters on the users screen
 
 // THEN I can save my initials and score
 
-//TODO: use a sort method to display the score board with final scores and initials
+// Tried looking up ways to show the score via JavaScript, and found almost everyone using jquery, so I do not know how I am supposed to get this score to show up on my separate page, really wish that I did though.
 
-//TODO: on the same page as the 'Quiz Concluded', prompt the user with a request to enter their name for the score board
+var score = 0
+var storedScores = JSON.parse(localStorage.getItem('finalTime')) || []
 
+function renderScores() {
 
+    for (var i = 0; i < storedScores.length; i++) {
+        var newLi = document.createElement("li")
+        newLi.textContent = (userObj)
+        document.getElementById("scoresList").append(newLi)
+    }
+}
